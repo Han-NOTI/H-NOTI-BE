@@ -2,10 +2,10 @@ const admin = require('firebase-admin');
 
 // Firebase 초기화 (서비스 계정 키 필요)
 if (!admin.apps.length) {
-    admin.initializeApp({
-      credential: admin.credential.cert(require('./serviceAccountKey.json'))
-    });
-  }
+  admin.initializeApp({
+    credential: admin.credential.cert(require('./serviceAccountKey.json'))
+  });
+}
 
 const db = admin.firestore();
 console.log(db);
@@ -35,6 +35,7 @@ async function getUserData(username) {
           acc[courseName] = [];
         }
         acc[courseName].push(lecture);
+        
         return acc;
       }, {});
   

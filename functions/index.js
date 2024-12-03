@@ -1,4 +1,3 @@
-
 const { onRequest } = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
 const { loginWithEclass } = require('./LoginFunction');
@@ -41,7 +40,7 @@ exports.loginWithEclass = onRequest(
       const { username, password } = req.body;
       const result = await loginWithEclass(username, password);
 
-      if (result.success) {
+      if (result) {
         res.status(200).json({ success: true, data: result });
       } else {
         res.status(401).json({ error: 'Login failed' });
